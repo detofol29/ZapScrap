@@ -30,32 +30,30 @@
 #ENTRYPOINT ["dotnet", "ZapScrap.API.dll"]
 
 # Etapa base com .NET e Chrome instalado
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 8080
-
-# Instala o Google Chrome e dependências
-RUN apt-get update && apt-get install -y wget gnupg unzip \
-    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list' \
-    && apt-get update && apt-get install -y google-chrome-stable \
-    && rm -rf /var/lib/apt/lists/*
-
-# Etapa de build do projeto
+# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ZapScrap.API.csproj", "./"]
-RUN dotnet restore "./ZapScrap.API.csproj"
-COPY . .
-WORKDIR "/app"
-RUN dotnet build "./ZapScrap.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# Fase final (produção)
-FROM base AS final
+# Copia apenas o csproj para cache do restore
+COPY ["ZapScrap.API/ZapScrap.API.csproj", "ZapScrap.API/"]
+RUN dotnet restore "ZapScrap.API/ZapScrap.API.csproj"
+
+# Copia todo o restante do código
+COPY . .
+
+WORKDIR "/src/ZapScrap.API"
+RUN dotnet build "ZapScrap.API.csproj" -c Release -o /app/build
+
+# Publish
+RUN dotnet publish "ZapScrap.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Variável obrigatória para o Render
+# Variável para Render
 ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "ZapScrap.API.dll"]
