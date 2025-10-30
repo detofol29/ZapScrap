@@ -117,8 +117,13 @@ namespace ZapImoveisWebScraper
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
 
-            options.AddArgument("--single-process");
-            options.AddArgument("--no-zygote");
+            //options.AddArgument("--single-process");
+            //options.AddArgument("--no-zygote");
+            options.AddArgument("--disable-software-rasterizer");
+            options.AddArgument("--disable-background-networking");
+            options.AddArgument("--disable-default-apps");
+            options.AddArgument("--disable-sync");
+            options.AddArgument("--disable-translate");
 
             options.BinaryLocation = "/usr/bin/google-chrome";
 
