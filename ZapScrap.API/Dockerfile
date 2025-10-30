@@ -44,11 +44,11 @@ RUN apt-get update && apt-get install -y wget gnupg unzip \
 # Etapa de build do projeto
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ZapScrap.API/ZapScrap.API.csproj", "ZapScrap.API/"]
-RUN dotnet restore "ZapScrap.API/ZapScrap.API.csproj"
+COPY ["ZapScrap.API.csproj", "./"]
+RUN dotnet restore "./ZapScrap.API.csproj"
 COPY . .
-WORKDIR "/src/ZapScrap.API"
-RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+WORKDIR "/app"
+RUN dotnet build "./ZapScrap.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Fase final (produção)
 FROM base AS final
