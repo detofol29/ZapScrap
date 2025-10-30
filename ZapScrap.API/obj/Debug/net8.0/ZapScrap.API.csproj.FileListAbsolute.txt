@@ -43,3 +43,4 @@ C:\Users\detof\Projetos\ZapScrap\ZapScrap.API\obj\Debug\net8.0\refint\ZapScrap.A
 C:\Users\detof\Projetos\ZapScrap\ZapScrap.API\obj\Debug\net8.0\ZapScrap.API.pdb
 C:\Users\detof\Projetos\ZapScrap\ZapScrap.API\obj\Debug\net8.0\ZapScrap.API.genruntimeconfig.cache
 C:\Users\detof\Projetos\ZapScrap\ZapScrap.API\obj\Debug\net8.0\ref\ZapScrap.API.dll
+C:\Users\detof\Projetos\ZapScrap\ZapScrap.API\obj\Debug\net8.0\ZapScrap.API.sourcelink.json

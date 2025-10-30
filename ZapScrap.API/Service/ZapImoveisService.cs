@@ -93,7 +93,6 @@ namespace ZapImoveisWebScraper
                 options.AddArgument("--headless=new");
             }
 
-            // Argumentos essenciais para container Docker
             options.AddArgument("--no-sandbox");
             options.AddArgument("--disable-dev-shm-usage");
             options.AddArgument("--disable-gpu");
@@ -103,19 +102,31 @@ namespace ZapImoveisWebScraper
             options.AddArgument("--disable-blink-features=AutomationControlled");
             options.AddExcludedArgument("enable-automation");
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
+
+            // Otimizações para ambiente de produção
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--disable-software-rasterizer");
+            options.AddArgument("--disable-background-networking");
+            options.AddArgument("--disable-default-apps");
+            options.AddArgument("--disable-sync");
+            options.AddArgument("--metrics-recording-only");
+            options.AddArgument("--mute-audio");
+
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
 
-            // Caminho do Chrome no container (ajustado para a instalação manual)
             options.BinaryLocation = "/usr/bin/google-chrome";
 
             try
             {
                 Console.WriteLine("Inicializando ChromeDriver...");
                 _driver = new ChromeDriver(options);
-                _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
-                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+                // Timeouts maiores para o Render (rede pode ser mais lenta)
+                _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
+                _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+                _driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(30);
 
                 Console.WriteLine("✓ ChromeDriver inicializado com sucesso!");
                 //Console.WriteLine($"Chrome version: {_driver.Capabilities.GetCapability("browserVersion")}");
@@ -123,7 +134,6 @@ namespace ZapImoveisWebScraper
             catch (Exception ex)
             {
                 Console.WriteLine($"❌ Erro ao inicializar ChromeDriver: {ex.Message}");
-                Console.WriteLine($"Stack trace: {ex.StackTrace}");
                 throw;
             }
         }
