@@ -119,11 +119,6 @@ namespace ZapImoveisWebScraper
 
             options.AddArgument("--single-process");
             options.AddArgument("--no-zygote");
-            options.AddArgument("--disable-software-rasterizer");
-            options.AddArgument("--disable-background-networking");
-            options.AddArgument("--disable-default-apps");
-            options.AddArgument("--disable-sync");
-            options.AddArgument("--disable-translate");
 
             options.BinaryLocation = "/usr/bin/google-chrome";
 
