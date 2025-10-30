@@ -93,37 +93,85 @@ namespace ZapImoveisWebScraper
                 options.AddArgument("--headless=new");
             }
 
+            //options.AddArgument("--no-sandbox");
+            //options.AddArgument("--disable-dev-shm-usage");
+            //options.AddArgument("--disable-gpu");
+            //options.AddArgument("--disable-extensions");
+            //options.AddArgument("--disable-setuid-sandbox");
+            //options.AddArgument("--window-size=1920,1080");
+            //options.AddArgument("--disable-blink-features=AutomationControlled");
+            //options.AddExcludedArgument("enable-automation");
+            //options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
+
+            //// Otimizações para ambiente de produção
+            //options.AddArgument("--disable-dev-shm-usage");
+            //options.AddArgument("--disable-software-rasterizer");
+            //options.AddArgument("--disable-background-networking");
+            //options.AddArgument("--disable-default-apps");
+            //options.AddArgument("--disable-sync");
+            //options.AddArgument("--metrics-recording-only");
+            //options.AddArgument("--mute-audio");
+
+
+            //options.AddAdditionalOption("useAutomationExtension", false);
+            //options.AddUserProfilePreference("credentials_enable_service", false);
+            //options.AddUserProfilePreference("profile.password_manager_enabled", false);
+
+            ////options.AddArgument("--single-process");
+            ////options.AddArgument("--no-zygote");
+            //options.AddArgument("--disable-software-rasterizer");
+            //options.AddArgument("--disable-background-networking");
+            //options.AddArgument("--disable-default-apps");
+            //options.AddArgument("--disable-sync");
+            //options.AddArgument("--disable-translate");
+
+            //options.BinaryLocation = "/usr/bin/google-chrome";
+
+            // Argumentos essenciais para evitar crash por memória
             options.AddArgument("--no-sandbox");
             options.AddArgument("--disable-dev-shm-usage");
             options.AddArgument("--disable-gpu");
             options.AddArgument("--disable-extensions");
             options.AddArgument("--disable-setuid-sandbox");
-            options.AddArgument("--window-size=1920,1080");
-            options.AddArgument("--disable-blink-features=AutomationControlled");
-            options.AddExcludedArgument("enable-automation");
-            options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
 
-            // Otimizações para ambiente de produção
-            options.AddArgument("--disable-dev-shm-usage");
-            options.AddArgument("--disable-software-rasterizer");
-            options.AddArgument("--disable-background-networking");
-            options.AddArgument("--disable-default-apps");
-            options.AddArgument("--disable-sync");
+            // CRÍTICO: Limite de memória e otimizações
+            options.AddArgument("--single-process"); // Usa apenas 1 processo
+            options.AddArgument("--disable-dev-tools");
+            options.AddArgument("--no-zygote"); // Reduz uso de memória
+            options.AddArgument("--disable-background-timer-throttling");
+            options.AddArgument("--disable-backgrounding-occluded-windows");
+            options.AddArgument("--disable-breakpad");
+            options.AddArgument("--disable-component-extensions-with-background-pages");
+            options.AddArgument("--disable-features=TranslateUI,BlinkGenPropertyTrees");
+            options.AddArgument("--disable-ipc-flooding-protection");
+            options.AddArgument("--disable-renderer-backgrounding");
+            options.AddArgument("--enable-features=NetworkService,NetworkServiceInProcess");
+            options.AddArgument("--force-color-profile=srgb");
+            options.AddArgument("--hide-scrollbars");
             options.AddArgument("--metrics-recording-only");
             options.AddArgument("--mute-audio");
 
-
-            options.AddAdditionalOption("useAutomationExtension", false);
-            options.AddUserProfilePreference("credentials_enable_service", false);
-            options.AddUserProfilePreference("profile.password_manager_enabled", false);
-
-            //options.AddArgument("--single-process");
-            //options.AddArgument("--no-zygote");
+            // Desabilita recursos pesados
             options.AddArgument("--disable-software-rasterizer");
             options.AddArgument("--disable-background-networking");
             options.AddArgument("--disable-default-apps");
             options.AddArgument("--disable-sync");
             options.AddArgument("--disable-translate");
+
+            // Janela menor = menos memória
+            options.AddArgument("--window-size=1280,720");
+
+            // Anti-detecção
+            options.AddArgument("--disable-blink-features=AutomationControlled");
+            options.AddExcludedArgument("enable-automation");
+            options.AddArgument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
+
+            options.AddAdditionalOption("useAutomationExtension", false);
+            options.AddUserProfilePreference("credentials_enable_service", false);
+            options.AddUserProfilePreference("profile.password_manager_enabled", false);
+
+            // Desabilita imagens para economizar memória (OPCIONAL)
+            // options.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
 
             options.BinaryLocation = "/usr/bin/google-chrome";
 
