@@ -102,22 +102,23 @@ namespace ZapImoveisWebScraper
             options.AddArgument("--window-size=1920,1080");
             options.AddArgument("--disable-blink-features=AutomationControlled");
             options.AddExcludedArgument("enable-automation");
-            options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+            options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
 
-            // Caminho do Chrome no container
+            // Caminho do Chrome no container (ajustado para a instalação manual)
             options.BinaryLocation = "/usr/bin/google-chrome";
 
             try
             {
-                // Não precisa configurar o service manualmente, deixe o Selenium encontrar o chromedriver
+                Console.WriteLine("Inicializando ChromeDriver...");
                 _driver = new ChromeDriver(options);
                 _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
                 _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
                 Console.WriteLine("✓ ChromeDriver inicializado com sucesso!");
+                //Console.WriteLine($"Chrome version: {_driver.Capabilities.GetCapability("browserVersion")}");
             }
             catch (Exception ex)
             {
