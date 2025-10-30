@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "72sB6U4f6f4oqXbPG1KpDwsJbGEoXN6/n+ocPMJiE2w=",
+  "Source": "ZapScrap.API",
+  "BasePath": "_content/ZapScrap.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

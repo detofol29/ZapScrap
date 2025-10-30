@@ -1,0 +1,136 @@
+# ========================================
+# .NET / ASP.NET Core API - .gitignore
+# ========================================
+
+# Build results
+bin/
+obj/
+out/
+build/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+
+# Visual Studio cache
+.vs/
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+logs/
+LogFiles/
+
+# Dependency caches
+packages/
+*.nupkg
+*.snupkg
+
+# Generated files
+Generated/
+Generated_Code/
+*.generated.cs
+
+# Publish outputs
+publish/
+dist/
+app.publish/
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Environment variables
+.env
+.env.*
+
+# ASP.NET specific
+wwwroot/lib/
+wwwroot/dist/
+App_Data/
+App_Browsers/
+App_Code/
+App_WebReferences/
+
+# Local configuration
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Azure / Hosting
+.azure/
+.publish/
+*.azurePubxml
+
+# Docker
+docker-compose.override.yml
+**/Dockerfile.*
+**/docker-compose*.yml
+*.dockerfile
+
+# IIS Express
+.vs/
+iisexpress/
+*.vspscc
+*.vssscc
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# SQLite / LocalDB
+*.db
+*.db-shm
+*.db-wal
+*.mdf
+*.ldf
+
+# Backup & Package files
+*.zip
+*.tar.gz
+*.7z
+
+# Node (caso use front no mesmo repositório)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Tools / Scripts
+tools/
+scripts/
+
+# JetBrains Rider plugin cache
+.idea/
+.idea_modules/
+
+# Visual Studio Code settings
+.vscode/
+.history/
+*.code-workspace
+
+# ========================================
+# END OF FILE
+# ========================================

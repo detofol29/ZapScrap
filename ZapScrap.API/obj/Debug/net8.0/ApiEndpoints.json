@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ZapScrap.API.Controllers.ZapScrapController",
+    "Method": "ObterAnuncios",
+    "RelativePath": "ZapScrap/ObterAnuncios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ZapScrap.API.Modelos.ZapScrapRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

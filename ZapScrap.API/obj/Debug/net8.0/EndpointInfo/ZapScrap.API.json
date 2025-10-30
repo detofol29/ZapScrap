@@ -1,0 +1,119 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ZapScrap.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/ZapScrap/ObterAnuncios": {
+      "get": {
+        "tags": [
+          "ZapScrap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZapScrapRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZapScrapRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZapScrapRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TipoDeAnuncio": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TipoDeImovel": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ZapScrapRequest": {
+        "type": "object",
+        "properties": {
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoImovel": {
+            "$ref": "#/components/schemas/TipoDeImovel"
+          },
+          "valorMinimo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valorMaximo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tipoAnuncio": {
+            "$ref": "#/components/schemas/TipoDeAnuncio"
+          },
+          "quantidadeMinimaDeBanheiros": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "quantidadeMinimaDeQuartos": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "quantidadeMinimaDeVagasNaGaragem": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "areaMinima": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "paginas": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
