@@ -135,9 +135,7 @@ namespace ZapImoveisWebScraper
             options.AddArgument("--disable-setuid-sandbox");
 
             // CRÍTICO: Limite de memória e otimizações
-            options.AddArgument("--single-process"); // Usa apenas 1 processo
             options.AddArgument("--disable-dev-tools");
-            options.AddArgument("--no-zygote"); // Reduz uso de memória
             options.AddArgument("--disable-background-timer-throttling");
             options.AddArgument("--disable-backgrounding-occluded-windows");
             options.AddArgument("--disable-breakpad");
