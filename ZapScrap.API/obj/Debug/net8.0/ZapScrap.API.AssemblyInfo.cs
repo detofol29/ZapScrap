@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZapScrap.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dedceb606e7922a402c9cf7b18a13ec81d5240d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50cae677b1b99db289bd63c81f191b1dcfeda6ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZapScrap.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZapScrap.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

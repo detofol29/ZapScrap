@@ -112,9 +112,18 @@ namespace ZapImoveisWebScraper
             options.AddArgument("--metrics-recording-only");
             options.AddArgument("--mute-audio");
 
+
             options.AddAdditionalOption("useAutomationExtension", false);
             options.AddUserProfilePreference("credentials_enable_service", false);
             options.AddUserProfilePreference("profile.password_manager_enabled", false);
+
+            options.AddArgument("--single-process");
+            options.AddArgument("--no-zygote");
+            options.AddArgument("--disable-software-rasterizer");
+            options.AddArgument("--disable-background-networking");
+            options.AddArgument("--disable-default-apps");
+            options.AddArgument("--disable-sync");
+            options.AddArgument("--disable-translate");
 
             options.BinaryLocation = "/usr/bin/google-chrome";
 
@@ -302,11 +311,11 @@ namespace ZapImoveisWebScraper
 
                 // Rola até o meio da página
                 js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight / 2);");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 // Rola até o final
                 js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 // Volta para o topo
                 js.ExecuteScript("window.scrollTo(0, 0);");
