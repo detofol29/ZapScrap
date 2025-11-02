@@ -10,7 +10,7 @@ namespace ZapScrap.API.Controllers
     [Route("[controller]/")]
     public class ZapScrapController : ControllerBase
     {
-        [HttpGet("ObterAnuncios")]
+        [HttpPost("ObterAnuncios")]
         public async Task<IActionResult> ObterAnuncios(ZapScrapRequest request)
         {
             try
