@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
@@ -264,9 +266,9 @@ namespace ZapImoveisWebScraper
 
             var url = $"https://www.zapimoveis.com.br/{tipoNegocio}/";
 
-            var cidade = filtros.Cidade.ToLower();
-            var estado = filtros.Estado.ToLower();
-            var bairro = filtros.Bairro?.Trim().ToLower().Replace(" ", "-");
+            var cidade = RemoverAcentos(filtros.Cidade.ToLower());
+            var estado = RemoverAcentos(filtros.Estado.ToLower());
+            var bairro = RemoverAcentos(filtros.Bairro?.Trim().ToLower().Replace(" ", "-"));
 
             var localizacao = $"{estado}+{cidade}";
 
@@ -347,6 +349,28 @@ namespace ZapImoveisWebScraper
             }
 
             return url;
+        }
+
+        private string RemoverAcentos(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return texto;
+
+            // Normaliza a string para a forma de decomposição (D)
+            var textoNormalizado = texto.Normalize(NormalizationForm.FormD);
+
+            var sb = new StringBuilder();
+
+            foreach (var c in textoNormalizado)
+            {
+                var categoria = CharUnicodeInfo.GetUnicodeCategory(c);
+                // Ignora os caracteres não espaciais (acentos)
+                if (categoria != UnicodeCategory.NonSpacingMark)
+                    sb.Append(c);
+            }
+
+            // Retorna a string recompondo para forma C (normal)
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
 
         private void RolarPagina()
