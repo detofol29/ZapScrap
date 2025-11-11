@@ -1,6 +1,6 @@
 ﻿namespace ZapScrap.API.Modelos
 {
-    public class Imovel
+    public struct Imovel
     {
         public string Titulo { get; set; }
         public string Preco { get; set; }
