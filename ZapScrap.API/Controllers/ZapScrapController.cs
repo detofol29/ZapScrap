@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using ZapImoveisWebScraper;
 using ZapScrap.API.Enuns;
 using ZapScrap.API.Modelos;

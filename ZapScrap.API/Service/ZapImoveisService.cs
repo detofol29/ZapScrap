@@ -1,12 +1,9 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
 using ZapScrap.API.Enuns;
 using ZapScrap.API.Modelos;
 
@@ -22,69 +19,6 @@ namespace ZapImoveisWebScraper
             _modoHeadless = modoHeadless;
             InicializarDriver();
         }
-
-        //private void InicializarDriver()
-        //{
-        //    try
-        //    {
-        //        Console.WriteLine("Verificando e baixando ChromeDriver compatível...");
-        //        new DriverManager().SetUpDriver(new ChromeConfig(), "141.0.7390.108");
-        //        Console.WriteLine("✓ ChromeDriver configurado!");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"⚠️ Aviso ao configurar WebDriverManager: {ex.Message}");
-        //        Console.WriteLine("Tentando usar ChromeDriver local...");
-        //    }
-
-        //    var options = new ChromeOptions();
-
-        //    if (_modoHeadless)
-        //    {
-        //        options.AddArgument("--headless=new"); // modo headless atualizado
-        //    }
-
-        //    options.AddArgument("--no-sandbox");
-        //    options.AddArgument("--disable-dev-shm-usage");
-        //    options.AddArgument("--disable-gpu");
-        //    options.AddArgument("--window-size=1920,1080");
-        //    options.AddArgument("--disable-blink-features=AutomationControlled");
-        //    options.AddExcludedArgument("enable-automation");
-        //    options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
-
-        //    options.AddAdditionalOption("useAutomationExtension", false);
-        //    options.AddUserProfilePreference("credentials_enable_service", false);
-        //    options.AddUserProfilePreference("profile.password_manager_enabled", false);
-
-        //    // Caminho do ChromeDriver (Render roda em Linux)
-        //    var chromeDriverService = ChromeDriverService.CreateDefaultService();
-        //    chromeDriverService.HideCommandPromptWindow = true;
-
-        //    // >>> MUITO IMPORTANTE <<<
-        //    chromeDriverService.EnableVerboseLogging = false;
-
-        //    // Use o path correto para o Chrome no Linux container
-        //    options.BinaryLocation = "/usr/bin/google-chrome";
-
-        //    try
-        //    {
-        //        _driver = new ChromeDriver(chromeDriverService, options);
-        //        _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
-        //        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-
-        //        Console.WriteLine("✓ ChromeDriver inicializado com sucesso!");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"❌ Erro ao inicializar ChromeDriver: {ex.Message}");
-        //        Console.WriteLine("\nCertifique-se de que:");
-        //        Console.WriteLine("1. O Chrome está instalado");
-        //        Console.WriteLine("2. O ChromeDriver está instalado (dotnet add package Selenium.WebDriver.ChromeDriver)");
-        //        Console.WriteLine("3. As versões do Chrome e ChromeDriver são compatíveis");
-        //        throw;
-        //    }
-        //}
-
 
         private void InicializarDriver()
         {
@@ -209,11 +143,11 @@ namespace ZapImoveisWebScraper
                     _driver.Navigate().GoToUrl(url);
 
                     Console.WriteLine("Aguardando carregamento da página...");
-                    await Task.Delay(3000);
+                    await Task.Delay(2000);
 
                     RolarPagina();
 
-                    await Task.Delay(5000);
+                    await Task.Delay(3000);
 
                     var html = _driver.PageSource;
   

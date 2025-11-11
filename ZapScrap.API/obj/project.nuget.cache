@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZgSJydC9IeA=",
+  "dgSpecHash": "SuBP7pq3nmY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\detof\\Projetos\\ZapScrap\\ZapScrap.API\\ZapScrap.API.csproj",
+  "projectFilePath": "C:\\projetos\\ZapScrap\\ZapScrap.API\\ZapScrap.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\detof\\.nuget\\packages\\anglesharp\\1.1.2\\anglesharp.1.1.2.nupkg.sha512",
     "C:\\Users\\detof\\.nuget\\packages\\htmlagilitypack\\1.11.61\\htmlagilitypack.1.11.61.nupkg.sha512",
